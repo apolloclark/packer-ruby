@@ -1,0 +1,20 @@
+# http://docs.ansible.com/ansible/latest/playbooks_variables.html#variable-file-separation
+---
+hostname: all
+
+# rvm.ruby
+# this role can install rvm, ruby, and gem globally, or per user
+rvm1_rubies:
+  - 'ruby-2.6.1'
+rvm1_user: 'root'
+rvm1_install_flags: '--auto-dotfiles'
+rvm1_install_path: '/usr/local/rvm'
+
+ruby_source_rvm: True
+ruby_rvm_script_path: '/etc/profile.d/rvm.sh'
+ruby_rvm_gems_path: '/usr/local/rvm/gems/ruby-2.6.1'
+ruby_install_gems_user: 'root'
+ruby_install_gems:
+  - serverspec
+  - docker-api
+  - infrataster

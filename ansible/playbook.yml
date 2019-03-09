@@ -1,0 +1,15 @@
+# http://docs.ansible.com/ansible/latest/playbooks_best_practices.html#directory-layout
+---
+# playbook.yml
+
+- hosts: all
+  connection: local
+  gather_facts: yes
+  become: true
+  become_user: "root"
+  vars_files:
+    - "vars.yml"
+  roles:
+    - rvm.ruby
+  tasks:
+    - include: tasks/gems.yml

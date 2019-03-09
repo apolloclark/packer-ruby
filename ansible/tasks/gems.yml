@@ -1,0 +1,17 @@
+---
+# file: tasks/main.yml
+
+- name: Source RVM, if configured to
+  shell: "source {{ ruby_rvm_script_path }}"
+  when:
+    - ruby_source_rvm
+    - ruby_rvm_script_path != ""
+
+# https://docs.ansible.com/ansible/latest/modules/gem_module.html
+- name: Install Ruby Gems
+  gem:
+    state: present
+    name: "{{ item }}"
+    install_dir: "{{ ruby_rvm_gems_path }}"
+    user_install: False
+  with_items: "{{ ruby_install_gems }}"
