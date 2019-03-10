@@ -1,4 +1,3 @@
 # http://docs.ansible.com/ansible/latest/galaxy.html#installing-multiple-roles-from-a-file
 ---
 - src: rvm.ruby           # https://github.com/rvm/rvm1-ansible
-- src: geerlingguy.ruby   # https://github.com/geerlingguy/ansible-role-ruby
