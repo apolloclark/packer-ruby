@@ -2,7 +2,8 @@
   "variables": {
     "ansible_host": "default",
     "ansible_connection": "docker",
-    "package": "{{env `DOCKER_PACKAGE`}}",
+    "package": "{{env `PACKAGE`}}",
+    "package_version": "{{env `PACKAGE_VERSION`}}",
     "username": "{{env `DOCKER_USERNAME`}}",
     "version": "{{isotime \"20060102.030405\"}}",
     "version_simple": "{{isotime \"20060102\"}}"
@@ -10,7 +11,7 @@
   "builders": [
     {
       "type": "docker",
-      "image": "centos:7.6.1810",
+      "image": "amazonlinux:1",
       "commit": "true",
       "exec_user": "root",
       "run_command": [
@@ -67,6 +68,11 @@
         "type": "docker-tag",
         "repository": "{{ user `username` }}/{{user `package`}}",
         "tag": "{{user `version_simple`}}"
+      },
+      {
+        "type": "docker-tag",
+        "repository": "{{ user `username` }}/{{user `package`}}",
+        "tag": "{{user `package_version`}}"
       },
       {
         "type": "docker-tag",
