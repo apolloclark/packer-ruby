@@ -2,12 +2,10 @@
 start=`date +%s`
 
 # ensure that ENV VARs are set
+export DOCKER_BASE_IMAGE=${DOCKER_BASE_IMAGE:="amazonlinux:1"}
 export DOCKER_USERNAME=${DOCKER_USERNAME:=$(whoami)}
-echo "$DOCKER_USERNAME"
 export PACKAGE=${PACKAGE:=ruby}
-echo "$PACKAGE"
 export PACKAGE_VERSION=${PACKAGE_VERSION:=2.6.1}
-echo "$PACKAGE_VERSION"
 
 # remove previously built local images
 docker image rmi $DOCKER_USERNAME/$PACKAGE:$(date -u '+%Y%m%d') -f  || true
@@ -25,9 +23,7 @@ secs=$((end-start))
 printf 'runtime = %02dh:%02dm:%02ds\n' $(($secs/3600)) $(($secs%3600/60)) $(($secs%60))
 
 # test the Docker image w/ Serverspec
-#rspec ./spec/Dockerfile_ubuntu18.04.rb
-#rspec ./spec/Dockerfile_centos7.4.rb
-rspec ./spec/Dockerfile_amzlinux1.rb
+rspec ./spec/Dockerfile_$DOCKER_BASE_IMAGE.rb
 
 # push images
 docker push $DOCKER_USERNAME/$PACKAGE:$(date -u '+%Y%m%d');

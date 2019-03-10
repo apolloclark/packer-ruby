@@ -40,14 +40,27 @@ describe "Dockerfile" do
   end
 
 
-  # packages
-  describe package(ENV['PACKAGE']) do
-    it { should be_installed }
-    its('version') { should eq ENV['PACKAGE_VERSION'] }
+
+  # this test is a bit odd, since rvm is a Bash built-in function
+  describe command('bash -l -c "rvm --version"') do
+    its(:exit_status) { should eq 0 }
+    its(:stdout) { should contain '1.29.7' }
+  end
+  
+  describe command("ruby --version") do
+    its(:exit_status) { should eq 0 }
+    its(:stdout) { should contain '2.6.1' }
   end
 
-  describe command("osqueryd --version") do
+  describe command("gem --version") do
     its(:exit_status) { should eq 0 }
-    its(:stdout) { should contain '3.3.2' }
+    its(:stdout) { should contain '3.0.1' }
+  end
+
+  describe command("gem list") do
+    its(:exit_status) { should eq 0 }
+    its(:stdout) { should contain 'serverspec' }
+    its(:stdout) { should contain 'docker-api' }
+    its(:stdout) { should contain 'infrataster' }
   end
 end

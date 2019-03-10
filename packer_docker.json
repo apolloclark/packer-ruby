@@ -1,7 +1,8 @@
 {
   "variables": {
-    "ansible_host": "default",
+    "ansible_host": "{{env `PACKAGE`}}",
     "ansible_connection": "docker",
+    "image": "{{env `DOCKER_BASE_IMAGE`}}",
     "package": "{{env `PACKAGE`}}",
     "package_version": "{{env `PACKAGE_VERSION`}}",
     "username": "{{env `DOCKER_USERNAME`}}",
@@ -11,7 +12,7 @@
   "builders": [
     {
       "type": "docker",
-      "image": "amazonlinux:1",
+      "image": "{{user `image`}}",
       "commit": "true",
       "exec_user": "root",
       "run_command": [
@@ -38,7 +39,7 @@
       "inline": [
         "whoami",
         "yum update -y",
-        "yum install -y sudo which nano wget git"
+        "yum install -y which nano wget git"
       ]
     },
     {
