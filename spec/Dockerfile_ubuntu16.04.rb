@@ -15,7 +15,7 @@ describe "Dockerfile" do
     # https://docs.docker.com/engine/api/v1.24/#31-containers
     # https://github.com/swipely/docker-api
     # https://serverspec.org/resource_types.html
-    set :os, family: :redhat
+    set :os, family: :debian
     set :backend, :docker
     set :docker_image, image.id
   end
