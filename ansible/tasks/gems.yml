@@ -3,6 +3,8 @@
 
 - name: Source RVM, if configured to
   shell: "source {{ ruby_rvm_script_path }}"
+  args:
+    executable: /bin/bash
   when:
     - ruby_source_rvm
     - ruby_rvm_script_path != ""
