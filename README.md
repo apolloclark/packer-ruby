@@ -27,7 +27,7 @@ export DOCKER_USERNAME="apolloclark" # $(whoami)
 RVM, 1.29.7, 2019-01-03
 https://github.com/rvm/rvm/releases
 
-Ruby, 2.6.1, 2019-01-30
+Ruby, 2.6.3, 2019-04-17
 https://www.ruby-lang.org/en/downloads/releases/
 
 Serverspec, 2.41.3, 2017-11-07
