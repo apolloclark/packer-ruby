@@ -18,13 +18,13 @@ describe "Dockerfile" do
     # https://docs.docker.com/engine/api/v1.24/#31-containers
     # https://github.com/swipely/docker-api
     # https://serverspec.org/resource_types.html
-    set :os, family: :redhat
+    set :os, family: :debian
     set :backend, :docker
     set :docker_image, image.id
   end
 
   def os_version
-    command("cat /etc/system-release").stdout
+    command("cat /etc/os-release").stdout
   end
 
   def sys_user
@@ -33,9 +33,9 @@ describe "Dockerfile" do
 
 
 
-  it "installs the right version of Centos" do
-    expect(os_version).to include("CentOS")
-    expect(os_version).to include("7.6.1810")
+  it "installs the right version of Ubuntu" do
+    expect(os_version).to include("Ubuntu")
+    expect(os_version).to include("18.04")
   end
 
   it "runs as root user" do
