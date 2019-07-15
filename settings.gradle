@@ -7,5 +7,5 @@
  * in the user manual at https://docs.gradle.org/5.4.1/userguide/multi_project_builds.html
  */
 
-rootProject.name = 'packer-nodejs'
+rootProject.name = 'packer-ruby'
 include ':gradle-build:centos7.6', ':gradle-build:ubuntu18.04', ':gradle-build:ubuntu16.04'
