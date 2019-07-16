@@ -33,36 +33,25 @@ export DOCKER_PASSWORD=""
 gradle clean --parallel --project-dir gradle-build
 
 # Gradle, build all images, in parallel
-gradle testAnsible --parallel --project-dir gradle-build
-
-# Gradle, build all images, in parallel, forced rebuild
-gradle testAnsible --parallel --rerun-tasks --project-dir gradle-build
+gradle test --rerun-tasks --parallel --project-dir gradle-build
 
 # Gradle, build only specific OS images
-gradle ubuntu18.04:testAnsible --project-dir gradle-build
-gradle ubuntu16.04:testAnsible --project-dir gradle-build
-gradle centos7:testAnsible --project-dir gradle-build
+gradle ubuntu18.04:test --project-dir gradle-build --rerun-tasks
+gradle ubuntu16.04:test --project-dir gradle-build --rerun-tasks
+gradle centos7:test     --project-dir gradle-build --rerun-tasks
 
-# Gradle, build only specific OS images, forced rebuild
-gradle ubuntu18.04:testAnsible --rerun-tasks --project-dir gradle-build
-gradle ubuntu16.04:testAnsible --rerun-tasks --project-dir gradle-build
-gradle centos7:testAnsible --rerun-tasks --project-dir gradle-build
-
-
+# Gradle, publish images
+gradle push --parallel --project-dir gradle-build
 
 # Gradle, list tasks, and dependency graph
 gradle tasks --project-dir gradle-build
 gradle tasks --all --project-dir gradle-build
 gradle test taskTree --project-dir gradle-build
-gradle buildParallel taskTree --project-dir gradle-build
 
 # Gradle, debug
 gradle properties
-
 gradle ubuntu16.04:info --project-dir gradle-build
-
 gradle ubuntu16.04:test --project-dir gradle-build --info --rerun-tasks
-
 rm -rf ~/.gradle
 ```
 
