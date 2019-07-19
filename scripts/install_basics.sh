@@ -4,7 +4,8 @@ if [ -x "$(command -v apt-get)" ]; then
     export DEBIAN_FRONTEND=noninteractive
     apt-get update
     apt-get upgrade -yq
-    apt-get install -yq aptitude python-minimal nano curl wget git apt-transport-https gnupg2
+    apt-get install -yq aptitude software-properties-common python-minimal \
+      nano curl wget git gnupg2 apt-transport-https
 fi
 
 if [ -x "$(command -v yum)" ]; then
