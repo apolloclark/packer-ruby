@@ -6,10 +6,7 @@ if [ -x "$(command -v apt-get)" ]; then
     apt-get upgrade -yq
     apt-get install -yq aptitude software-properties-common python-minimal \
       nano curl wget git gnupg2 apt-transport-https
-    exit 0;
-fi
-
-if [ -x "$(command -v dnf)" ]; then
+elif [ -x "$(command -v dnf)" ]; then
     dnf makecache
     dnf --assumeyes install which nano curl wget git gnupg2 initscripts \
         hostname python3 patch autoconf automake bzip2 gcc-c++ libffi-devel \
@@ -18,10 +15,7 @@ if [ -x "$(command -v dnf)" ]; then
     dnf clean all
     alternatives --set python /usr/bin/python3
     python --version
-    exit 0;
-fi
-
-if [ -x "$(command -v yum)" ]; then
+elif [ -x "$(command -v yum)" ]; then
     yum makecache fast
     yum update -y
     yum install -y which nano curl wget git gnupg2 initscripts hostname
@@ -31,5 +25,4 @@ if [ -x "$(command -v yum)" ]; then
     gpg --keyserver hkp://keys.gnupg.net \
         --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 \
         7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-    exit 0;
 fi
