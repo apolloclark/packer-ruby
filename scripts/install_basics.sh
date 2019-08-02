@@ -20,7 +20,12 @@ elif [ -x "$(command -v yum)" ]; then
     yum clean all
 fi
 
+# https://github.com/inversepath/usbarmory-debian-base_image/issues/9
+# https://github.com/nextcloud/docker/pull/687#issuecomment-472481276
+# https://github.com/docker-library/official-images/issues/4252#issuecomment-381783035
+mkdir ~/.gnupg && echo "disable-ipv6" >> ~/.gnupg/dirmngr.conf
+
 # https://github.com/rvm/rvm/issues/4573
 gpg --keyserver hkp://keys.gnupg.net \
     --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 \
-    7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+    7D2BAF1CF37B13E2069D6956105BD0E739499BDB || true
