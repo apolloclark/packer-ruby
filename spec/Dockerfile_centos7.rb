@@ -5,13 +5,13 @@ require_relative "spec_helper"
 describe "Dockerfile" do
   before(:all) do
     load_docker_image()
-    set :os, family: :debian
+    set :os, family: :redhat
   end
 
   describe "Dockerfile#running" do
-    it "runs the right version of Ubuntu" do
-      expect(os_version).to include("Ubuntu")
-      expect(os_version).to include("16.04")
+    it "runs the right version of CentOS" do
+      expect(os_version).to include("CentOS")
+      expect(os_version).to include("release 7")
     end
     it "runs as root user" do
       expect(sys_user).to eql("root")

@@ -9,9 +9,9 @@ describe "Dockerfile" do
   end
 
   describe "Dockerfile#running" do
-    it "runs the right version of Ubuntu" do
-      expect(os_version).to include("Ubuntu")
-      expect(os_version).to include("16.04")
+    it "runs the right version of Debian" do
+      expect(os_version).to include("Debian")
+      expect(os_version).to include("GNU/Linux 9")
     end
     it "runs as root user" do
       expect(sys_user).to eql("root")
