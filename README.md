@@ -46,6 +46,7 @@ gradle debian9:test     --project-dir gradle-build --rerun-tasks
 
 gradle rhel8:test     --project-dir gradle-build --rerun-tasks
 gradle rhel7:test     --project-dir gradle-build --rerun-tasks
+gradle centos8:test   --project-dir gradle-build --rerun-tasks
 gradle centos7:test   --project-dir gradle-build --rerun-tasks
 gradle amzlinux2:test --project-dir gradle-build --rerun-tasks
 
@@ -72,7 +73,7 @@ rm -rf ~/.gradle
 RVM, 1.29.9, 2019-07-09
 https://github.com/rvm/rvm/releases
 
-Ruby, 2.6.3, 2019-04-17
+Ruby, 2.6.5, 2019-10-10
 https://www.ruby-lang.org/en/downloads/releases/
 
 Serverspec, 2.41.4, 2019-05-17

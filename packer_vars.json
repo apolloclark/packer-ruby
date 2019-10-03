@@ -1,3 +1,4 @@
 {
-    "docker_changes": "CMD [\"irb\"],ENV PATH=/usr/local/bundle/bin:/usr/local/bundle/gems/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin,ENV RUBY_MAJOR=2.6,ENV RUBY_VERSION=2.6.3,"
+    "docker_changes": "CMD [\"irb\"],ENV PATH=/usr/local/bundle/bin:/usr/local/bundle/gems/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin,ENV RUBY_MAJOR=2.6,ENV RUBY_VERSION=2.6.5,",
+    "docker_capadd": "--log-driver=json-file"
 }
