@@ -24,9 +24,6 @@ git submodule update --recursive --remote
 export DOCKER_USERNAME="apolloclark" # $(whoami)
 export DOCKER_PASSWORD=""
 
-# build with Bash
-./build_packer_docker_all.sh
-
 
 
 # clean up ALL previous builds
